@@ -141,7 +141,7 @@ var Detector = function () {
       return this.mobile() && !this.phone();
     }
 
-    // http://browserhacks.com/#hack-acea075d0ac6954f275a70023906050c
+    
 
   }, {
     key: 'ie11',
@@ -448,7 +448,7 @@ var options = {
 };
 
 // Detect not supported browsers (<=IE9)
-// http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+
 var isBrowserNotSupported = function isBrowserNotSupported() {
   return document.all && !window.atob;
 };
