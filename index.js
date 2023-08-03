@@ -27,6 +27,14 @@ app.get('/products', (req, res) => {
     res.render('products');
 })
 
+app.get('/cart', (req, res) => {
+    res.render('cart');
+})
+
+app.get('/checkout', (req, res) => {
+    res.render('checkout');
+})
+
 app.listen(4000, () => {
     console.log('server listening at port 4000');
 })
