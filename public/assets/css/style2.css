@@ -2,8 +2,10 @@
 
 .containerr {
     display: flex;
-    width: 70%;
+    width: 100%;
     margin-bottom: 30px;
+    margin-top: 100px;
+    justify-content: center;
 }
 
 #root {
@@ -15,6 +17,7 @@
 
 .sidebar {
     width: 40%;
+    height: 40%;
     border-radius: 5px;
     background-color: #eee;
     margin-left: 20px;
@@ -75,10 +78,7 @@
     height: 110px;
 }
 
-h2 {
-    font-size: 20px;
-    color: red;
-}
+
 
 button {
     width: 100%;
@@ -121,4 +121,54 @@ button:hover{
 .bi-trash:hover {
     cursor: pointer;
     color: #333;
+}
+
+.col-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#product-cart-row {
+    margin-bottom: 5px;
+}
+
+.cart-img {
+    width: 50px;
+    height: 50px;
+}
+.cart-item-container {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+.offcan-center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.cart-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.btn-change {
+    width: 40px;
+    background-color: #797070;
+    border: 1px solid black;
+}
+
+.btn-incr {
+    margin-left: 8px;
+}
+.btn-decr {
+    margin-right: 8px;
+}
+.clients .swiper-slide img {
+    opacity: 1;
+    filter: grayscale(0);
+    filter: contrast(1.5);
 }

@@ -38,29 +38,30 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/style2.css" rel="stylesheet" />
   </head>
 
   <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top" style="background-color: black;">
+    <header id="header" class="fixed-top" style="background-color: black">
       <div
         class="container d-flex align-items-center justify-content-lg-between"
       >
-        <h1 class="logo me-auto me-lg-0">
+        <!-- <h1 class="logo me-auto me-lg-0">
           <a href="/">Citru<span>.</span></a>
-        </h1>
+        </h1> -->
 
-        <a href="index.html" class="logo me-auto me-lg-0"
-          ><img src="assets/img/logo.png" alt="" class="img-fluid"
+        <a href="/" class="logo me-auto me-lg-0"
+          ><img src="/assets/img/citruMilk-logo.jpg" alt="" class="img-fluid"
         /></a>
 
-        <nav id="navbar" class="navbar order-last order-lg-0" >
+        <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
-            <li><a class="nav-link scrollto " href="/">Home</a></li>
+            <li><a class="nav-link scrollto" href="/">Home</a></li>
             <li>
-              <a class="nav-link scrollto " href="/about-us">About Us</a>
+              <a class="nav-link scrollto" href="/about-us">About Us</a>
             </li>
-            
+
             <li class="dropdown">
               <a href="#"
                 ><span>Ndoma Farms</span> <i class="bi bi-chevron-down"></i
@@ -93,19 +94,25 @@
               <ul>
                 <li><a href="#">Mushroom </a></li>
                 <li class="dropdown">
-                    <a href="/products"
-                      ><span>Citrumilk Products</span>
-                      <i class="bi bi-chevron-right"></i
-                    ></a>
-                    <ul>
-                      <li><a href="/products">Soya Milk</a></li>
-                      <li><a href="/products">Yoghurt</a></li>
-                      <li><a href="/products">Mushroom Tea & Oyusta tea & Prodes</a></li>
-                      <li><a href="/products">Oyster Fresh Mushroom Fresh & doyal</a></li>
-                      <li><a href="/products">Sugar</a></li>
-                      <li><a href="/products">Spicies</a></li>
-                    </ul>
-                  </li>
+                  <a href="/products"
+                    ><span>Citrumilk Products</span>
+                    <i class="bi bi-chevron-right"></i
+                  ></a>
+                  <ul>
+                    <li><a href="/products">Soya Milk</a></li>
+                    <li><a href="/products">Yoghurt</a></li>
+                    <li>
+                      <a href="/products">Mushroom Tea & Oyusta tea & Prodes</a>
+                    </li>
+                    <li>
+                      <a href="/products"
+                        >Oyster Fresh Mushroom Fresh & doyal</a
+                      >
+                    </li>
+                    <li><a href="/products">Sugar</a></li>
+                    <li><a href="/products">Spicies</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Dry Fish</a></li>
                 <li><a href="#">Sugar</a></li>
                 <li><a href="#">Spices</a></li>
@@ -127,7 +134,52 @@
         </nav>
         <!-- .navbar -->
 
-        <a href="/checkout" class="get-started-btn scrollto"><i class="bi bi-cart3"></i> 0</a>
+        <a
+          href="/checkout"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+          class="get-started-btn scrollto"
+          ><i class="bi bi-cart3"></i> 0</a
+        >
+
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Your cart</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <h2>Your cart (2 items)</h2>
+            </div>
+            <div class="cart-item-container">
+              <div class="offcan-center">
+                <div class="">
+                  <img class="cart-img" src="/assets/img/mae-mu-ru4jyDiLHsI-unsplash.jpg" alt="" srcset="">
+                </div>
+                <div class="">seasonal milk</div>
+                <div class="">5000</div>
+              </div>
+              <div class="cart-count">
+                <button class="btn-change btn-decr"> - </button>
+                <p style="margin-top: 12px;">10</p>
+                <button class="btn-change btn-incr"> + </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
     <!-- End Header -->
+  </body>
+</html>

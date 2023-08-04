@@ -30,6 +30,9 @@ app.get('/products', (req, res) => {
 app.get('/cart', (req, res) => {
     res.render('cart');
 })
+app.get('/cart-2', (req, res) => {
+    res.render('cart-2');
+})
 
 app.get('/checkout', (req, res) => {
     res.render('checkout');
