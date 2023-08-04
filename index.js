@@ -22,11 +22,36 @@ app.get('/contact-us', (req, res) => {
 app.get('/fish', (req, res) => {
     res.render('fish');
 })
-
+app.get('/farm', (req, res) => {
+    res.render('farm');
+})
+app.get('/grasscuter', (req, res) => {
+    res.render('grasscuter');
+})
+app.get('/rabbit', (req, res) => {
+    res.render('rabbit');
+})
+app.get('/snail', (req, res) => {
+    res.render('snail');
+})
+app.get('/mushroom', (req, res) => {
+    res.render('mushrooms');
+})
+app.get('/sugar', (req, res) => {
+    res.render('sugar');
+})
+app.get('/spices', (req, res) => {
+    res.render('spices');
+})
+app.get('/soyabean', (req, res) => {
+    res.render('soyabean');
+})
+app.get('/mushroom-sub', (req, res) => {
+    res.render('mushroom-sub');
+})
 app.get('/products', (req, res) => {
     res.render('products');
 })
-
 app.get('/cart', (req, res) => {
     res.render('cart');
 })
