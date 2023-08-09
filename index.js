@@ -7,6 +7,8 @@ const cookieSession = require("cookie-session");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
+const productRoutes = require("./routes/products");
+const allProductRoutes = require("./routes/all-products");
 const app = express();
 
 // importing models
@@ -80,6 +82,12 @@ passport.deserializeUser(function(user, done) { done(null, user) });
 
 // authRoutes
 app.use(authRoutes);
+
+// productRoutes
+app.use(productRoutes);
+
+// allproductRoutes
+app.use(allProductRoutes);
 
 // routes
 app.post("/user", async (req, res) => {

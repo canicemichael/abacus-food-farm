@@ -126,18 +126,18 @@ router.get(`/`, async (req, res) => {
   res.json(productList);
 });
 
-router.get(`/:id`, async (req, res) => {
-  if (!mongoose.isValidObjectId(req.params.id)) {
-    return res.status(400).send("Invalid Product Id");
-  }
+// router.get(`/:id`, async (req, res) => {
+//   if (!mongoose.isValidObjectId(req.params.id)) {
+//     return res.status(400).send("Invalid Product Id");
+//   }
 
-  const product = await Product.findById(req.params.id).populate("category");
+//   const product = await Product.findById(req.params.id).populate("category");
 
-  if (!product) {
-    res.status(500).json({ success: false });
-  }
-  res.json(product);
-});
+//   if (!product) {
+//     res.status(500).json({ success: false });
+//   }
+//   res.json(product);
+// });
 
 router.delete("/:id", async (req, res) => {
   const product = await Product.findByIdAndRemove(req.params.id);

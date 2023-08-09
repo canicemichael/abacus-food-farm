@@ -39,24 +39,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post(`/fish-product`, upload.single("image"), async (req, res) => {
+router.post('/fish-product', upload.single("image"), async (req, res) => {
   const file = req.file;
   if (!file) return res.status(400).send("No image in the request");
 
   const fileName = req.file.filename;
   const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
 
-  const product = new Product({
+  const product = new FishProduct({
     name: req.body.name,
     description: req.body.description,
     richDescription: req.body.richDescription,
     image: `${basePath}${fileName}`,
-    brand: req.body.brand,
     price: req.body.price,
-    countInStock: req.body.countInStock,
-    rating: req.body.rating,
-    numReviews: req.body.numReviews,
-    isFeatured: req.body.isFeatured,
+    category: req.body.category,
   });
 
   if (!product) {
@@ -79,47 +75,39 @@ router.post(`/fish-product`, upload.single("image"), async (req, res) => {
 });
 
 router.post(`/dryfish-product`, upload.single("image"), async (req, res) => {
-    const file = req.file;
-    if (!file) return res.status(400).send("No image in the request");
-  
-    const fileName = req.file.filename;
-    const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
-  
-    const product = new Product({
-      name: req.body.name,
-      description: req.body.description,
-      richDescription: req.body.richDescription,
-      image: `${basePath}${fileName}`,
-      brand: req.body.brand,
-      price: req.body.price,
-      countInStock: req.body.countInStock,
-      rating: req.body.rating,
-      numReviews: req.body.numReviews,
-      isFeatured: req.body.isFeatured,
-    });
-  
-    if (!product) {
-      return res
-        .status(401)
-        .json({ success: false, message: "the product cannot be created" });
-    }
-  
-    product
-      .save()
-      .then((createdProduct) => {
-        res.status(201).json(createdProduct);
-      })
-      .catch((err) => {
-        res.status(500).json({
-          error: err,
-          success: false,
-        });
-      });
+  const file = req.file;
+  if (!file) return res.status(400).send("No image in the request");
+
+  const fileName = req.file.filename;
+  const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
+
+  const product = new DryfishProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: `${basePath}${fileName}`,
+    price: req.body.price,
+    category: req.body.category,
   });
 
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
 
-
-
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
 
 router.put("/:id", async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) {
