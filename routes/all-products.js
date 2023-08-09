@@ -39,18 +39,48 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/fish-product', upload.single("image"), async (req, res) => {
-  const file = req.file;
-  if (!file) return res.status(400).send("No image in the request");
+router.post("/dry-fish-product", upload.single("image"), async (req, res) => {
+  const product = new DryfishProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
 
-  const fileName = req.file.filename;
-  const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/fish-product", upload.single("image"), async (req, res) => {
+  //   const file = req.file;
+  //   if (!file) return res.status(400).send("No image in the request");
+
+  //   const fileName = req.file.filename;
+  //   const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
 
   const product = new FishProduct({
     name: req.body.name,
     description: req.body.description,
     richDescription: req.body.richDescription,
-    image: `${basePath}${fileName}`,
+    image: req.body.image,
+    // image: `${basePath}${fileName}`,
     price: req.body.price,
     category: req.body.category,
   });
@@ -74,18 +104,12 @@ router.post('/fish-product', upload.single("image"), async (req, res) => {
     });
 });
 
-router.post(`/dryfish-product`, upload.single("image"), async (req, res) => {
-  const file = req.file;
-  if (!file) return res.status(400).send("No image in the request");
-
-  const fileName = req.file.filename;
-  const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
-
-  const product = new DryfishProduct({
+router.post("/grasscuter-product", upload.single("image"), async (req, res) => {
+  const product = new GrasscuterProduct({
     name: req.body.name,
     description: req.body.description,
     richDescription: req.body.richDescription,
-    image: `${basePath}${fileName}`,
+    image: req.body.image,
     price: req.body.price,
     category: req.body.category,
   });
@@ -109,76 +133,207 @@ router.post(`/dryfish-product`, upload.single("image"), async (req, res) => {
     });
 });
 
-router.put("/:id", async (req, res) => {
-  if (!mongoose.isValidObjectId(req.params.id)) {
-    return res.status(400).send("Invalid Product Id");
+router.post("/milk-product", upload.single("image"), async (req, res) => {
+  const product = new MilkProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
   }
 
-  const category = await Category.findById(req.body.category);
-  if (!category) return res.status(400).send("Invalid Category");
-
-  const product = await Product.findByIdAndUpdate(
-    req.params.id,
-    {
-      name: req.body.name,
-      description: req.body.description,
-      richDescription: req.body.richDescription,
-      image: req.body.image,
-      brand: req.body.brand,
-      price: req.body.price,
-      category: category,
-      countInStock: req.body.countInStock,
-      rating: req.body.rating,
-      numReviews: req.body.numReviews,
-      isFeatured: req.body.isFeatured,
-    },
-    {
-      new: true,
-    }
-  );
-
-  if (!product)
-    return res
-      .status(404)
-      .json({ success: false, message: "category not found" });
-
-  res.status(200).json(product);
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
 });
 
-router.put(
-  "/gallery-images/:id",
-  upload.array("images", 10),
-  async (req, res) => {
-    if (!mongoose.isValidObjectId(req.params.id)) {
-      return res.status(400).send("Invalid Product Id");
-    }
-    const files = req.files;
-    let imagesPaths = [];
-    const basePath = `${req.protocol}://${req.get("host")}/public/uploads`;
+router.post("/mushroom-product", upload.single("image"), async (req, res) => {
+  const product = new MushroomProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
 
-    if (files) {
-      files.map((file) => {
-        imagesPaths.push(`${basePath}${file.fileName}`);
-      });
-    }
-
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      {
-        images: imagesPaths,
-      },
-      {
-        new: true,
-      }
-    );
-
-    if (!product)
-      return res
-        .status(404)
-        .json({ success: false, message: "category not found" });
-
-    res.status(200).json(product);
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
   }
-);
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/rabbit-product", upload.single("image"), async (req, res) => {
+  const product = new RabbitProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/snail-product", upload.single("image"), async (req, res) => {
+  const product = new SnailProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/soyabean-product", upload.single("image"), async (req, res) => {
+  const product = new SoyabeanProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/spices-product", upload.single("image"), async (req, res) => {
+  const product = new SpicesProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/sugar-product", upload.single("image"), async (req, res) => {
+  const product = new SugarProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
 
 module.exports = router;
