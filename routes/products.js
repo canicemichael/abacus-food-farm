@@ -108,23 +108,23 @@ router.put("/:id", async (req, res) => {
   res.status(200).json(product);
 });
 
-router.get(`/`, async (req, res) => {
-  // filtering and getting products by category
+// router.get(`/`, async (req, res) => {
+//   // filtering and getting products by category
 
-  let filter = {};
-  if (req.query.categories) {
-    filter = { category: req.query.categories.split(",") };
-  }
+//   let filter = {};
+//   if (req.query.categories) {
+//     filter = { category: req.query.categories.split(",") };
+//   }
 
-  const productList = await Product.find(filter)
-    .populate("category")
-    .select("name image category");
+//   const productList = await Product.find(filter)
+//     .populate("category")
+//     .select("name image category");
 
-  if (!productList) {
-    res.status(500).json({ success: false });
-  }
-  res.json(productList);
-});
+//   if (!productList) {
+//     res.status(500).json({ success: false });
+//   }
+//   res.json(productList);
+// });
 
 // router.get(`/:id`, async (req, res) => {
 //   if (!mongoose.isValidObjectId(req.params.id)) {

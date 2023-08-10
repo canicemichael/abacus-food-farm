@@ -9,6 +9,16 @@ const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 const allProductRoutes = require("./routes/all-products");
+const { DryfishProduct } = require("./models/dryfish-product");
+const { FishProduct } = require("./models/fish-product");
+const { GrasscuterProduct } = require("./models/grasscuter-product");
+const { MilkProduct } = require("./models/milk-product");
+const { MushroomProduct } = require("./models/mushroom-product");
+const { RabbitProduct } = require("./models/rabbit-product");
+const { SnailProduct } = require("./models/snail-product");
+const { SoyabeanProduct } = require("./models/soyabean-product");
+const { SpicesProduct } = require("./models/spices-product");
+const { SugarProduct } = require("./models/sugar-product");
 const app = express();
 
 // importing models
@@ -78,7 +88,9 @@ passport.serializeUser(function (user, done) {
 //     done(err, user);
 //   });
 // });
-passport.deserializeUser(function(user, done) { done(null, user) });
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 
 // authRoutes
 app.use(authRoutes);
@@ -106,35 +118,46 @@ app.get("/contact-us", (req, res) => {
   res.render("contact-us");
 });
 
-app.get("/fish", (req, res) => {
-  res.render("fish");
+app.get("/fish", async (req, res) => {
+  const fish = await FishProduct.find({});
+
+  res.render("fish", { fish });
 });
 app.get("/farm", (req, res) => {
   res.render("farm");
 });
-app.get("/grasscuter", (req, res) => {
-  res.render("grasscuter");
+app.get("/grasscuter", async (req, res) => {
+  const grasscuter = await GrasscuterProduct.find({});
+  res.render("grasscuter", { grasscuter });
 });
-app.get("/rabbit", (req, res) => {
-  res.render("rabbit");
+app.get("/rabbit", async (req, res) => {
+  const rabbit = await RabbitProduct.find({});
+  res.render("rabbit", { rabbit });
 });
-app.get("/snail", (req, res) => {
-  res.render("snail");
+app.get("/snail", async (req, res) => {
+  const snail = await SnailProduct.find({});
+  res.render("snail", { snail });
 });
-app.get("/mushroom", (req, res) => {
-  res.render("mushrooms");
+app.get("/mushroom", async (req, res) => {
+  const mushroom = await MushroomProduct.find({});
+  console.log(mushroom);
+  res.render("mushrooms", { mushroom });
 });
-app.get("/sugar", (req, res) => {
-  res.render("sugar");
+app.get("/sugar", async (req, res) => {
+  const sugar = await SugarProduct.find({});
+  res.render("sugar", { sugar });
 });
-app.get("/spices", (req, res) => {
-  res.render("spices");
+app.get("/spices", async (req, res) => {
+  const spices = await SpicesProduct.find({});
+  res.render("spices", { spices });
 });
-app.get("/soyabean", (req, res) => {
-  res.render("soyabean");
+app.get("/soyabean", async (req, res) => {
+  const soyabean = await SoyabeanProduct.find({});
+  res.render("soyabean", { soyabean });
 });
-app.get("/mushroom-sub", (req, res) => {
-  res.render("mushroom-sub");
+app.get("/mushroom-sub", async (req, res) => {
+  const mushroom = await MushroomProduct.find({});
+  res.render("mushroom-sub", { mushroom });
 });
 app.get("/products", (req, res) => {
   res.render("products");
