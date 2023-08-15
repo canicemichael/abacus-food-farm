@@ -27,14 +27,20 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
           <div class="member" data-aos="fade-up" data-aos-delay="100">
             <div class="member-img">
-              <img src="<%= inv.image %>" class="img-fluid" alt="" />
+              <img
+                src="<%= inv.image %>"
+                class="img-fluid"
+                alt=""
+                id="item-img"
+              />
               <div class="social">
-                <button href="">add to cart</button>
+                <button class="addtocart" data-product-id="<%= inv.id %>" data-product-img="<%= inv.image %>" data-product-name="<%= inv.name %>" data-product-price="<%= inv.price %>" href="">add to cart</button>
               </div>
             </div>
             <div class="member-info">
-              <h4><%= inv.name %></h4>
-              <span><%= inv.price %></span>
+              <h4 id="item-name"><%= inv.name %></h4>
+              <span id="item-price"><%= inv.price %></span>
+              <span id="item-id" style="display: none"><%= inv.id %></span>
             </div>
           </div>
         </div>

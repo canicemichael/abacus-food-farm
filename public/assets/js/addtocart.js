@@ -2,26 +2,26 @@ const product = [
   {
     id: 0,
     image: "assets/img/about.jpg",
-    title: "Z Flip Foldable Mobile",
-    price: 120,
+    title: "jodsh",
+    price: 1200,
   },
   {
     id: 1,
     image: "assets/img/k-k-YxNQ_sJ-IIk-unsplash.jpg",
-    title: "Z Flip Foldable Mobile",
-    price: 120,
+    title: "water",
+    price: 50,
   },
   {
     id: 2,
     image: "assets/img/mae-mu-ru4jyDiLHsI-unsplash.jpg",
-    title: "Z Flip Foldable Mobile",
+    title: "yuitfr",
     price: 120,
   },
   {
     id: 3,
     image: "assets/img/about.jpg",
     title: "Z Flip Foldable Mobile",
-    price: 120,
+    price: 100,
   },
 ];
  

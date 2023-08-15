@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const passport = require("passport");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -35,6 +36,9 @@ const localStrategy = require("passport-local").Strategy;
 // middlewares
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+// cookie parser
+app.use(cookieParser());
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -140,7 +144,7 @@ app.get("/snail", async (req, res) => {
 });
 app.get("/mushroom", async (req, res) => {
   const mushroom = await MushroomProduct.find({});
-  console.log(mushroom);
+  // console.log(mushroom);
   res.render("mushrooms", { mushroom });
 });
 app.get("/sugar", async (req, res) => {
@@ -162,6 +166,87 @@ app.get("/mushroom-sub", async (req, res) => {
 app.get("/products", (req, res) => {
   res.render("products");
 });
+
+app.post("/set-cookies", (req, res, next) => {
+  const date = new Date();
+  date.setHours(date.getHours() + 5);
+  const time = date.getTime();
+
+  // res.cookie("isLoggedin", true, {
+  //   secure: true,
+  //   httpOnly: true,
+  //   expires: date,
+  //   domain: "example.com",
+  //   sameSite: "strict",
+  // });
+
+  // res.cookie("lang", "javascript", {
+  //   secure: true,
+  //   httpOnly: true,
+  //   domain: "example.com",
+  //   sameSite: "strict",
+  // });
+
+  const array = [req.body.item_name, req.body.item_price, req.body.item_src];
+
+  const existingUsername = req.cookies.numbers;
+  console.log(typeof existingUsername);
+
+  const obj = {};
+
+  existingUsername.forEach((element, index) => {
+    obj[`key${time}`] = element;
+  });
+
+  // 👇️️ {'key0': 'zero', 'key1': 'one', 'key2': 'two'}
+  // console.log(obj);
+  // console.log(req.body);
+
+  // console.log(req.body);
+
+  if (existingUsername) {
+    // Update the 'username' cookie with a new value
+    // const newArray = {
+    //   ...obj,
+    //   ...req.body
+    // }
+
+    const newArray = existingUsername + array;
+    // console.log(existingUsername);
+    // console.log(array);
+
+    res.cookie("numbers", newArray, { maxAge: 30 * 24 * 60 * 60 * 1000 }); // 30 days
+
+    // console.log(`Cookie updated. Old username: ${existingUsername}, New username: ${array}`);
+    // console.log(newArray);
+    console.log(req.cookies);
+    // res.sendStatus(200).json(newArray);
+  } else {
+    res.cookie(`numbers`, array);
+    res.send("Cookie not found");
+  }
+
+  // console.log(req.body);
+  // res.send(req.body);
+});
+
+app.get("/get-cookies", (req, res, next) => {
+  console.log(req.cookies.isLoggedin);
+  // true
+
+  // res.json(JSON.parse(localStorage.getItem('cart')) || []);
+  window.localStorage.setItem('key1', 'value1');
+
+  console.log(localStorage);
+  res.send(localStorage);
+});
+
+app.post("/deletecookie", (req, res) => {
+  //show the saved cookies
+  res.clearCookie("isLoggedin");
+  res.send("Cookie has been deleted successfully");
+});
+
 app.get("/cart", (req, res) => {
   res.render("cart");
 });
