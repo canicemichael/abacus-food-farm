@@ -235,7 +235,7 @@ app.get("/get-cookies", (req, res, next) => {
   // true
 
   // res.json(JSON.parse(localStorage.getItem('cart')) || []);
-  window.localStorage.setItem('key1', 'value1');
+  window.localStorage.setItem("key1", "value1");
 
   console.log(localStorage);
   res.send(localStorage);

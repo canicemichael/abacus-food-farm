@@ -57,106 +57,17 @@ addtocart_form.forEach((element) => {
           quantity: 1,
         };
 
-        // addToCart(product);
+        addToCart(product);
         getCartItems();
 
         // Save updated cart data to local storage
 
         // window.localStorage.setItem("cart", JSON.stringify(cart));
         // window.localStorage.setItem("key1", "value1");
-        // console.log(window.localStorage.getItem('key1') || []);
+        // console.log(window.localStorage.getItem('cart') || []);
       }
     }
   });
 });
 
-// // Get references to the HTML elements
-// const counterElement = document.getElementById("counter");
-// const addBtn = document.getElementById("addBtn");
-// const subtractBtn = document.getElementById("subtractBtn");
 
-// // Initialize the counter value
-// let counterValue = 1;
-
-// // Update the counter display
-// function updateCounterDisplay() {
-//   counterElement.textContent = counterValue;
-// }
-
-// // Add event listener for the "Add" button
-// addBtn.addEventListener("click", function () {
-//   counterValue++;
-//   updateCounterDisplay();
-// });
-
-// // Add event listener for the "Subtract" button
-// subtractBtn.addEventListener("click", function () {
-//   counterValue--;
-//   updateCounterDisplay();
-// });
-
-// addtocart_form.forEach((element) => {
-//   // Do something with each element
-//   element.addEventListener("click", async (event) => {
-//     event.preventDefault();
-
-//     let item_name = itemName.innerHTML;
-//     let item_price = itemPrice.innerHTML;
-//     let item_src = itemImg.src;
-//     let item_quantity = 1;
-//     let item_id = itemId.innerHTML;
-
-//     const product = {
-//       id: item_id,
-//       name: item_name,
-//       price: item_price,
-//       quantity: item_quantity,
-//       image: item_src,
-//     };
-
-//     console.log(product);
-
-//     // try {
-//     //   // Send a POST request to the login endpoint
-//     //   const response = await fetch("/deletecookie", {
-//     //     method: "POST",
-//     //     headers: {
-//     //       "Content-Type": "application/json",
-//     //     },
-//     //     // body: JSON.stringify({ item_name, item_price, item_src }),
-//     //   });
-
-//     //   const data = await response.json();
-//     //   console.log(data);
-
-//     //   // window.location.href = "/cart";
-//     // } catch (error) {
-//     //   console.error(error);
-//     //   alert("Error during login");
-//     // }
-//   });
-// });
-
-//   productCont.forEach(container => {
-//     const itemImg = container.querySelector('.member-img .img-fluid');
-//     const itemName = container.querySelector('.member-info .item-name');
-//     const itemId = container.querySelector('.member-info .item-id');
-//     const itemPrice = container.querySelector('.member-info .item-price');
-
-//   let item_name = itemName.textContent;
-//   let item_price = itemPrice.textContent;
-//   let item_src = itemImg.src;
-//   let item_quantity = 1;
-//   let item_id = itemId.innerHTML;
-
-//   const product = {
-//     id: item_id,
-//     name: item_name,
-//     price: item_price,
-//     quantity: item_quantity,
-//     image: item_src,
-//   };
-
-//   // console.log(product);
-
-// });
