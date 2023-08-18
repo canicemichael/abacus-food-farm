@@ -1,0 +1,166 @@
+<%- include('partials/header') %>
+
+<main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Check-out</h2>
+        <ol>
+          <li><a href="index.html">Shop-now</a></li>
+          <li>Check-out</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <!-- End Breadcrumbs -->
+
+  <section class="container" style="padding-top: 20px; padding-bottom: 20px">
+    <h2>Payment details</h2>
+    <form class="row g-3">     
+      <hr />
+      <p>Thank you, your order has been received.</p>
+      <hr />
+      <p>Order Number: <span class="span-value">some value</span></p>
+      <hr />
+      <p>Date: <span class="span-value"><%- new Date() %></span></p>
+      <hr />
+      <p>Total: <span class="span-value">some value</span></p>
+      <hr />
+      <p>Payment Method: <span class="span-value">Bank Transfer</span></p>
+      <hr />
+      <p>Click on the WhatsApp Icon you find on the homepage to send the proof of payment. Thanks!</p>
+      <div style="padding-top: 20px; padding-bottom: 20px">
+        <h2>Our bank details</h2>
+        <h4>Citru Milk Farm:</h4>
+        <hr />
+        <p>Bank: <span class="span-value">some value</span></p>
+        <hr />   
+        <p>Account Number: <span class="span-value">some value</span></p>
+        <hr />   
+        <p>Sort Code: <span class="span-value">some value</span></p>
+        <hr />   
+        <p>IBAN: <span class="span-value">some value</span></p>
+        <hr />   
+        <p>BIC: <span class="span-value">some value</span></p>
+        <hr />       
+            
+      </div>
+
+      <div style="padding-top: 20px; padding-bottom: 20px">
+        <h2>Order details</h2>
+        <div class="roww">
+          <div class="order-product">Product</div>
+          <div class="order-subtotal" >Subtotal</div>
+        </div>
+        <hr />
+        <div id="cart-table"></div>
+
+        <hr />       
+            
+
+        <div>
+          <h2></h2>
+          <p>            
+          </p>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="place-order" style="display: none;"></button>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-info">
+            <h3>CitruMilk<span>.</span></h3>
+            <p>
+              A108 Adam Street <br />
+              NY 535022, USA<br /><br />
+              <strong>Phone:</strong> +1 5589 55488 55<br />
+              <strong>Email:</strong> info@example.com<br />
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"
+                ><i class="bx bxl-facebook"></i
+              ></a>
+              <a href="#" class="instagram"
+                ><i class="bx bxl-instagram"></i
+              ></a>
+              <a href="#" class="google-plus"
+                ><i class="bx bxl-skype"></i
+              ></a>
+              <a href="#" class="linkedin"
+                ><i class="bx bxl-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li>
+              <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+            </li>
+            <li>
+              <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+            </li>
+            <li>
+              <i class="bx bx-chevron-right"></i> <a href="#">Services</a>
+            </li>
+            <li>
+              <i class="bx bx-chevron-right"></i>
+              <a href="#">Terms of service</a>
+            </li>
+            <li>
+              <i class="bx bx-chevron-right"></i>
+              <a href="#">Privacy policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="copyright">
+      &copy; Copyright <strong><span>CitruMilk</span></strong
+      >. All Rights Reserved
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+
+<div id="preloader"></div>
+<a
+  href="#"
+  class="back-to-top d-flex align-items-center justify-content-center"
+  ><i class="bi bi-arrow-up-short"></i
+></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/cart-view.js"></script>
+<script src="assets/js/checkout.js"></script>
+<script src="assets/js/orders.js"></script>
+</body>
+</html>

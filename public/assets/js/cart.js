@@ -70,4 +70,15 @@ addtocart_form.forEach((element) => {
   });
 });
 
+const whatsapp = document.querySelector(".chat-button");
+whatsapp.addEventListener("click", async (event) => {
+  event.preventDefault();
 
+  const phoneNumber = "2349017005308"; // Replace with the recipient's phone number
+  const message = "Hello, I'm interested in your products!"; // Replace with your message
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+  window.location.href = whatsappURL;
+});

@@ -20,6 +20,8 @@ const { SnailProduct } = require("./models/snail-product");
 const { SoyabeanProduct } = require("./models/soyabean-product");
 const { SpicesProduct } = require("./models/spices-product");
 const { SugarProduct } = require("./models/sugar-product");
+const { Order } = require("./models/order");
+const { getTransport, getMailOptions } = require("./service.js");
 const app = express();
 
 // importing models
@@ -172,21 +174,6 @@ app.post("/set-cookies", (req, res, next) => {
   date.setHours(date.getHours() + 5);
   const time = date.getTime();
 
-  // res.cookie("isLoggedin", true, {
-  //   secure: true,
-  //   httpOnly: true,
-  //   expires: date,
-  //   domain: "example.com",
-  //   sameSite: "strict",
-  // });
-
-  // res.cookie("lang", "javascript", {
-  //   secure: true,
-  //   httpOnly: true,
-  //   domain: "example.com",
-  //   sameSite: "strict",
-  // });
-
   const array = [req.body.item_name, req.body.item_price, req.body.item_src];
 
   const existingUsername = req.cookies.numbers;
@@ -198,22 +185,8 @@ app.post("/set-cookies", (req, res, next) => {
     obj[`key${time}`] = element;
   });
 
-  // 👇️️ {'key0': 'zero', 'key1': 'one', 'key2': 'two'}
-  // console.log(obj);
-  // console.log(req.body);
-
-  // console.log(req.body);
-
   if (existingUsername) {
-    // Update the 'username' cookie with a new value
-    // const newArray = {
-    //   ...obj,
-    //   ...req.body
-    // }
-
     const newArray = existingUsername + array;
-    // console.log(existingUsername);
-    // console.log(array);
 
     res.cookie("numbers", newArray, { maxAge: 30 * 24 * 60 * 60 * 1000 }); // 30 days
 
@@ -256,6 +229,54 @@ app.get("/cart-2", (req, res) => {
 
 app.get("/checkout", (req, res) => {
   res.render("checkout");
+});
+
+app.post("/order", async (req, res) => {
+  const receivedData = req.body; // Data sent from the frontend
+  console.log("Received Data:", receivedData);
+
+  // save receivedData in the backend
+  const newOrder = new Order({
+    first_name_mail: receivedData.first_name_mail,
+    last_name_mail: receivedData.last_name_mail,
+    email_mail: receivedData.email_mail,
+    phone_mail: receivedData.phone_mail,
+    address_mail: receivedData.address_mail,
+    town_mail: receivedData.town_mail,
+    state_name_mail: receivedData.state_name_mail,
+    delivery_location_mail: receivedData.delivery_location_mail,
+    delivery_price_mail: receivedData.delivery_price_mail,
+    item_details_mail: receivedData.item_details_mail,
+    subtotal_mail: receivedData.subtotal_mail,
+    actual_total_mail: receivedData.actual_total_mail,
+  });
+
+  await newOrder.save();
+
+  // send receivedData to a mail
+
+  res.status(200).json("sent an order to database");
+});
+
+app.get("/payment", (req, res) => {
+  res.render("payment");
+});
+
+app.get("/send-mail", async (req, res) => {
+  //Create mailrequest
+  let mailRequest = getMailOptions("canicecodes@gmail.com", "some link");
+
+  //Send mail
+  return getTransport().sendMail(mailRequest, (error) => {
+    if (error) {
+      res.status(500).send("Can't send email.");
+    } else {
+      res.status(200);
+      res.send({
+        message: `Link sent to ${email}`,
+      });
+    }
+  });
 });
 
 app.listen(4000, () => {

@@ -2,6 +2,7 @@ const placeOrder = document.getElementById("place-order");
 const firstName = document.getElementById("first-name");
 const lastName = document.getElementById("last-name");
 const email = document.getElementById("email");
+const phone = document.getElementById("phone");
 const address = document.getElementById("inputAddress");
 const town = document.getElementById("town");
 const stateName = document.getElementById("inputState");
@@ -51,6 +52,7 @@ placeOrder.addEventListener("click", async (event) => {
   console.log(firstName.value);
   console.log(lastName.value);
   console.log(email.value);
+  console.log(phone.value);
   console.log(address.value);
   console.log(town.value);
   console.log(stateName.value);
@@ -85,21 +87,32 @@ placeOrder.addEventListener("click", async (event) => {
 
   let first_name_mail = firstName.value;
   let last_name_mail = lastName.value;
+  let email_mail = email.value;
+  let phone_mail = phone.value;
   let address_mail = address.value;
   let town_mail = town.value;
   let state_name_mail = stateName.value;
   let delivery_location_mail = delivery_location;
   let delivery_price_mail = deliveryPrice;
-  // let item_details_mail = name;
+  let item_details_mail = cartOrders;
   let subtotal_mail = countt;
   let actual_total_mail = actualTotal;
 
   // SEND DATA TO SERVER
-  const url = "https://your-server.com/api/endpoint"; // Replace with your server's URL
+  const url = "http://localhost:4000/order"; // Replace with your server's URL
   const data = {
-    key1: "value1",
-    key2: "value2",
-    // Add more key-value pairs as needed
+    first_name_mail: firstName.value,
+    last_name_mail: lastName.value,
+    email_mail: email.value,
+    phone_mail: phone.value,
+    address_mail: address.value,
+    town_mail: town.value,
+    state_name_mail: stateName.value,
+    delivery_location_mail: delivery_location,
+    delivery_price_mail: deliveryPrice,
+    item_details_mail: cartOrders,
+    subtotal_mail: countt,
+    actual_total_mail: actualTotal,
   };
 
   fetch(url, {

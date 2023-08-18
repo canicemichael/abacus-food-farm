@@ -1,6 +1,26 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  position: relative;
+}
+
+.chat-button {
+  position: fixed;
+  bottom: 20px; /* Adjust the distance from the bottom */
+  left: 20px; /* Adjust the distance from the left */
+  z-index: 1000; /* Ensure the button stays above other content */
+}
+
+/* Style the button as needed */
+.chat-button img {
+  padding: 10px 20px;
+  /* background-color: #007bff; */
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 88px;
+  height: 66px;
 }
 
 a {
@@ -1748,4 +1768,8 @@ section {
 .remove-item-link:hover {
   color: red;
   text-decoration: underline;
+}
+
+.span-value {
+  font-weight: 700;
 }
