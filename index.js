@@ -254,6 +254,9 @@ app.post("/order", async (req, res) => {
   await newOrder.save();
 
   // send receivedData to a mail
+  // we get a mail each time a user orders a product with the
+  // neccessary products, then we can follow up the user from
+  // their mail if the havent paid.
 
   //Create mailrequest
   let mailRequest = getMailOptions("canicecodes@gmail.com", newOrder);
