@@ -255,7 +255,18 @@ app.post("/order", async (req, res) => {
 
   // send receivedData to a mail
 
-  res.status(200).json("sent an order to database");
+  //Create mailrequest
+  let mailRequest = getMailOptions("canicecodes@gmail.com", newOrder);
+
+  //Send mail
+  return getTransport().sendMail(mailRequest, (error) => {
+    if (error) {
+      res.status(500).send("Can't send email.");
+    } else {
+      // res.status(200).json('good');
+      res.redirect("/payment"); //redirect to a page i want.
+    }
+  });
 });
 
 app.get("/payment", (req, res) => {
@@ -271,10 +282,8 @@ app.get("/send-mail", async (req, res) => {
     if (error) {
       res.status(500).send("Can't send email.");
     } else {
-      res.status(200);
-      res.send({
-        message: `Link sent to ${email}`,
-      });
+      // res.status(200).json('good');
+      res.redirect("/payment"); //redirect to a page i want.
     }
   });
 });
