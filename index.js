@@ -45,6 +45,11 @@ app.use(cookieParser());
 app.use(express.static("public"));
 app.use(express.json());
 app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(
   session({
     secret: "xxx secret",
     resave: false,
@@ -169,57 +174,6 @@ app.get("/products", (req, res) => {
   res.render("products");
 });
 
-app.post("/set-cookies", (req, res, next) => {
-  const date = new Date();
-  date.setHours(date.getHours() + 5);
-  const time = date.getTime();
-
-  const array = [req.body.item_name, req.body.item_price, req.body.item_src];
-
-  const existingUsername = req.cookies.numbers;
-  console.log(typeof existingUsername);
-
-  const obj = {};
-
-  existingUsername.forEach((element, index) => {
-    obj[`key${time}`] = element;
-  });
-
-  if (existingUsername) {
-    const newArray = existingUsername + array;
-
-    res.cookie("numbers", newArray, { maxAge: 30 * 24 * 60 * 60 * 1000 }); // 30 days
-
-    // console.log(`Cookie updated. Old username: ${existingUsername}, New username: ${array}`);
-    // console.log(newArray);
-    console.log(req.cookies);
-    // res.sendStatus(200).json(newArray);
-  } else {
-    res.cookie(`numbers`, array);
-    res.send("Cookie not found");
-  }
-
-  // console.log(req.body);
-  // res.send(req.body);
-});
-
-app.get("/get-cookies", (req, res, next) => {
-  console.log(req.cookies.isLoggedin);
-  // true
-
-  // res.json(JSON.parse(localStorage.getItem('cart')) || []);
-  window.localStorage.setItem("key1", "value1");
-
-  console.log(localStorage);
-  res.send(localStorage);
-});
-
-app.post("/deletecookie", (req, res) => {
-  //show the saved cookies
-  res.clearCookie("isLoggedin");
-  res.send("Cookie has been deleted successfully");
-});
-
 app.get("/cart", (req, res) => {
   res.render("cart");
 });
@@ -231,9 +185,14 @@ app.get("/checkout", (req, res) => {
   res.render("checkout");
 });
 
+app.get("/checkout2", (req, res) => {
+  res.render("checkout2");
+});
+
 app.post("/order", async (req, res) => {
   const receivedData = req.body; // Data sent from the frontend
   console.log("Received Data:", receivedData);
+  // console.log("Received Data:");
 
   // save receivedData in the backend
   const newOrder = new Order({
@@ -251,29 +210,66 @@ app.post("/order", async (req, res) => {
     actual_total_mail: receivedData.actual_total_mail,
   });
 
-  await newOrder.save();
+  // await newOrder.save();
+  res.render("cart-2");
 
   // send receivedData to a mail
   // we get a mail each time a user orders a product with the
   // neccessary products, then we can follow up the user from
   // their mail if the havent paid.
 
-  //Create mailrequest
+  // Create mailrequest
   let mailRequest = getMailOptions("canicecodes@gmail.com", newOrder);
 
   //Send mail
   return getTransport().sendMail(mailRequest, (error) => {
     if (error) {
-      res.status(500).send("Can't send email.");
+      res.status(500).redirect("/order");
     } else {
       // res.status(200).json('good');
-      res.redirect("/payment"); //redirect to a page i want.
+      res.render("payment"); //redirect to a page i want.
     }
   });
 });
 
-app.get("/payment", (req, res) => {
-  res.render("payment");
+app.post("/order2", async (req, res) => {
+  const first_name = await req.body.first_name;
+  const last_name = await req.body.last_name;
+  const email = await req.body.email;
+  const address = await req.body.address;
+  const town = await req.body.town;
+  const selectedOption = await req.body.picker;
+  const radioBtn = await req.body.flexRadioDefault;
+  const orderId = await req.body.orderId;
+  const totalPrice = await req.body.totalPriceValue;
+
+  res.send(
+    `${first_name} ${last_name} ${email} ${address} ${town} ${selectedOption}  ${radioBtn} ${orderId} ${totalPrice}`
+  );
+});
+
+app.post("/payment", async (req, res) => {
+  const first_name = await req.body.first_name;
+  const last_name = await req.body.last_name;
+  const email = await req.body.email;
+  const address = await req.body.address;
+  const town = await req.body.town;
+  const selectedOption = await req.body.picker;
+  const radioBtn = await req.body.flexRadioDefault;
+  const orderId = await req.body.orderId;
+  const totalPrice = await req.body.totalPriceValue;
+
+  res.render("payment", {
+    first_name,
+    last_name,
+    email,
+    address,
+    town,
+    selectedOption,
+    radioBtn,
+    orderId,
+    totalPrice,
+  });
 });
 
 app.get("/send-mail", async (req, res) => {
@@ -286,7 +282,7 @@ app.get("/send-mail", async (req, res) => {
       res.status(500).send("Can't send email.");
     } else {
       // res.status(200).json('good');
-      res.redirect("/payment"); //redirect to a page i want.
+      res.render("payment"); //redirect to a page i want.
     }
   });
 });

@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 const placeOrder = document.getElementById("place-order");
 const firstName = document.getElementById("first-name");
 const lastName = document.getElementById("last-name");
@@ -49,13 +51,22 @@ if (selectedRadio) {
 
 placeOrder.addEventListener("click", async (event) => {
   event.preventDefault();
-  console.log(firstName.value);
-  console.log(lastName.value);
-  console.log(email.value);
-  console.log(phone.value);
-  console.log(address.value);
-  console.log(town.value);
-  console.log(stateName.value);
+  // console.log(firstName.value);
+  // console.log(lastName.value);
+  // console.log(email.value);
+  // console.log(phone.value);
+  // console.log(address.value);
+  // console.log(town.value);
+  // console.log(stateName.value);
+
+  // You can perform some actions here before the form submission
+  // console.log("Event listener before form submission");
+
+  // Now, submit the form programmatically
+  // placeOrder.submit();
+
+  // This code will run after the form is submitted
+  // console.log("Event listener after form submission");
 
   let delivery_location;
 
@@ -85,34 +96,39 @@ placeOrder.addEventListener("click", async (event) => {
   const actualTotal = countt + Number(deliveryPrice);
   console.log(actualTotal);
 
-  let first_name_mail = firstName.value;
-  let last_name_mail = lastName.value;
-  let email_mail = email.value;
-  let phone_mail = phone.value;
-  let address_mail = address.value;
-  let town_mail = town.value;
-  let state_name_mail = stateName.value;
-  let delivery_location_mail = delivery_location;
-  let delivery_price_mail = deliveryPrice;
-  let item_details_mail = cartOrders;
-  let subtotal_mail = countt;
-  let actual_total_mail = actualTotal;
-
   // SEND DATA TO SERVER
   const url = "http://localhost:4000/order"; // Replace with your server's URL
+  if (firstName.value === ''){
+    firstName.value = 'customar name'
+  }
+  if (lastName.value === ''){
+    lastName.value = 'customar last name'
+  }
+  if (email.value === ''){
+    email.value = 'customar mail'
+  }
+  if (phone.value === ''){
+    phone.value = 'customar phone'
+  }
+  if (address.value === ''){
+    address.value = 'customar address'
+  }
+  if (town.value === ''){
+    town.value = 'customar town'
+  }
   const data = {
-    first_name_mail: firstName.value,
-    last_name_mail: lastName.value,
-    email_mail: email.value,
-    phone_mail: phone.value,
-    address_mail: address.value,
-    town_mail: town.value,
-    state_name_mail: stateName.value,
-    delivery_location_mail: delivery_location,
-    delivery_price_mail: deliveryPrice,
-    item_details_mail: cartOrders,
-    subtotal_mail: countt,
-    actual_total_mail: actualTotal,
+    'first_name_mail': firstName.value,
+    'last_name_mail': lastName.value,
+    'email_mail': email.value,
+    'phone_mail': phone.value,
+    'address_mail': address.value,
+    'town_mail': town.value,
+    'state_name_mail': stateName.value,
+    'delivery_location_mail': delivery_location,
+    'delivery_price_mail': deliveryPrice,
+    'item_details_mail': cartOrders,
+    'subtotal_mail': countt,
+    'actual_total_mail': actualTotal,
   };
 
   fetch(url, {
@@ -121,15 +137,17 @@ placeOrder.addEventListener("click", async (event) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((responseData) => {
+  }).then((responseData) => {
       // Handle the response from the server
       console.log("Server Response:", responseData);
+      const url = `http://localhost:4000/payment`;
+      window.location.href = url;
     })
     .catch((error) => {
       console.error("Error:", error);
     });
+
+  
 });
 
 function getCartItems() {
@@ -286,3 +304,5 @@ totalCont.appendChild(totalBoxValue);
 checkoutDivv2.appendChild(totalCont);
 checkoutDivv2.appendChild(totalBoxValue);
 cartTable.appendChild(checkoutDivv2);
+
+});

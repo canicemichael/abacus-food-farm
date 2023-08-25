@@ -1,4 +1,177 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Home</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/img/citruMilk-logo.jpg">
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/style2.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top" style="background-color: black">
+      <div
+        class="container d-flex align-items-center justify-content-lg-between"
+      >
+        <!-- <h1 class="logo me-auto me-lg-0">
+          <a href="/">Citru<span>.</span></a>
+        </h1> -->
+
+        <a href="/" class="logo me-auto me-lg-0"
+          ><img src="/assets/img/citruMilk-logo.jpg" alt="" class="img-fluid"
+        /></a>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto" href="/">Home</a></li>
+            <li>
+              <a class="nav-link scrollto" href="/farm">About Us</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#"
+                ><span>Ndoma Farms</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="/farm">About Ndoma Farms</a></li>
+                <li><a href="/fish">Fish</a></li>
+                <li><a href="/rabbit">Rabbit -> Processed Meat</a></li>
+                <li><a href="/snail">Snail -> Process</a></li>
+                <li><a href="/grasscuter">Grasscuter</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Shop Now</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="/mushroom">Mushroom </a></li>
+                <li class="dropdown">
+                  <a href="/products"
+                    ><span>Citrumilk Products</span>
+                    <i class="bi bi-chevron-right"></i
+                  ></a>
+                  <ul>
+                    <li><a href="/products">Soya Milk</a></li>
+                    <li><a href="/products">Yoghurt</a></li>
+                    <li>
+                      <a href="/products">Mushroom Tea & Oyusta tea & Prodes</a>
+                    </li>
+                    <li>
+                      <a href="/products"
+                        >Oyster Fresh Mushroom Fresh & doyal</a
+                      >
+                    </li>
+                    <li><a href="/products">Sugar</a></li>
+                    <li><a href="/products">Spicies</a></li>
+                  </ul>
+                </li>
+                <li><a href="/fish">Dry Fish</a></li>
+                <li><a href="/sugar">Sugar</a></li>
+                <li><a href="/spices">Spices</a></li>
+                <li><a href="/soyabean">Soyabean Powder</a></li>
+                <li><a href="/mushroom-sub">Mushroom Substrate</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/contact-us"
+                ><span>Contact Us</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="/contact-us">Inquiry</a></li>
+                <li><a href="/contact-us">Become a distributor</a></li>
+              </ul>
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+        <a
+          href="/checkout"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+          class="get-started-btn scrollto"
+          ><i class="bi bi-cart3"></i>
+          <span id="cart-total-items-quantity">0</span></a
+        >
+
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Your cart</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <!-- <div class="cart-item-container">
+              <div class="offcan-center">
+                <div class="">
+                  <img class="cart-img" src="/assets/img/mae-mu-ru4jyDiLHsI-unsplash.jpg" alt="" srcset="">
+                </div>
+                <div class="">seasonal milk</div>
+                <div class="">5000</div>
+              </div>
+              <div class="cart-count">
+                <button class="btn-change btn-decr" id="subtractBtn"> - </button>
+                <p style="margin-top: 12px;" id="counter">1</p>
+                <button class="btn-change btn-incr" id="addBtn"> + </button>
+              </div>
+            </div> -->
+            <div id="cart-container"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+    <!-- Chat button -->
+    <div class="chat-button">
+      <!-- <button id="openChat">Chat</button> -->
+      <img src="assets/img/WhatsApp.svg.png" alt="">
+    </div>
+
 
 <main id="main">
   <!-- ======= Breadcrumbs ======= -->
@@ -139,7 +312,6 @@
 
         <hr />       
             
-
         <div>
           <h2>Direct bank transfer</h2>
           <p>

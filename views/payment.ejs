@@ -21,11 +21,11 @@
       <hr />
       <p>Thank you, your order has been received.</p>
       <hr />
-      <p>Order Number: <span class="span-value">some value</span></p>
+      <p>Order Number: <span class="span-value"><%- orderId %></span></p>
       <hr />
       <p>Date: <span class="span-value"><%- new Date() %></span></p>
       <hr />
-      <p>Total: <span class="span-value">some value</span></p>
+      <p>Total: <span class="span-value"><%- totalPrice %></span></p>
       <hr />
       <p>Payment Method: <span class="span-value">Bank Transfer</span></p>
       <hr />
@@ -34,31 +34,22 @@
         <h2>Our bank details</h2>
         <h4>Citru Milk Farm:</h4>
         <hr />
-        <p>Bank: <span class="span-value">some value</span></p>
+        <p>Bank: <span class="span-value">Access Bank</span></p>
         <hr />   
-        <p>Account Number: <span class="span-value">some value</span></p>
+        <p>Account Number: <span class="span-value">14573456200</span></p>
         <hr />   
-        <p>Sort Code: <span class="span-value">some value</span></p>
+        <!-- <p>Sort Code: <span class="span-value">some value</span></p>
         <hr />   
         <p>IBAN: <span class="span-value">some value</span></p>
         <hr />   
         <p>BIC: <span class="span-value">some value</span></p>
-        <hr />       
+        <hr />        -->
             
       </div>
 
       <div style="padding-top: 20px; padding-bottom: 20px">
-        <h2>Order details</h2>
-        <div class="roww">
-          <div class="order-product">Product</div>
-          <div class="order-subtotal" >Subtotal</div>
-        </div>
-        <hr />
+        
         <div id="cart-table"></div>
-
-        <hr />       
-            
-
         <div>
           <h2></h2>
           <p>            
@@ -160,7 +151,7 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/cart.js"></script>
 <script src="assets/js/cart-view.js"></script>
-<script src="assets/js/checkout.js"></script>
+<!-- <script src="assets/js/checkout.js"></script> -->
 <script src="assets/js/orders.js"></script>
 </body>
 </html>
