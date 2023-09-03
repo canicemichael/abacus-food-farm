@@ -172,3 +172,8 @@ button:hover{
     filter: grayscale(0);
     filter: contrast(1.5);
 }
+
+.back-trans-img {
+    height: 180px;
+    width: 180px;
+}
