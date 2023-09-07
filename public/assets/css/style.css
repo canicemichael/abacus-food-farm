@@ -324,6 +324,10 @@ h6 {
   }
 }
 
+@media (max-width: 991px) {
+  
+}
+
 .navbar-mobile {
   position: fixed;
   overflow: hidden;

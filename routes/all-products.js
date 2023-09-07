@@ -11,6 +11,7 @@ const { SnailProduct } = require("../models/snail-product");
 const { SoyabeanProduct } = require("../models/soyabean-product");
 const { SpicesProduct } = require("../models/spices-product");
 const { SugarProduct } = require("../models/sugar-product");
+const { MushroomOysterTeaProduct } = require("../models/mushroom-oyster-tea-product");
 const mongoose = require("mongoose");
 const multer = require("multer");
 
@@ -164,6 +165,35 @@ router.post("/milk-product", upload.single("image"), async (req, res) => {
 
 router.post("/mushroom-product", upload.single("image"), async (req, res) => {
   const product = new MushroomProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/mushroom-oyster-tea-product", upload.single("image"), async (req, res) => {
+  const product = new MushroomOysterTeaProduct({
     name: req.body.name,
     description: req.body.description,
     richDescription: req.body.richDescription,

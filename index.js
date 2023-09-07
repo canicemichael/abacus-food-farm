@@ -21,6 +21,7 @@ const { SoyabeanProduct } = require("./models/soyabean-product");
 const { SpicesProduct } = require("./models/spices-product");
 const { SugarProduct } = require("./models/sugar-product");
 const { Order } = require("./models/order");
+const { MushroomOysterTeaProduct } = require("./models/mushroom-oyster-tea-product");
 const { getTransport, getMailOptions } = require("./service.js");
 const app = express();
 
@@ -134,6 +135,11 @@ app.get("/fish", async (req, res) => {
 
   res.render("fish", { fish });
 });
+app.get("/dry-fish-product", async (req, res) => {
+  const fish = await DryfishProduct.find({});
+
+  res.render("dry-fish", { fish });
+});
 app.get("/farm", (req, res) => {
   res.render("farm");
 });
@@ -153,6 +159,11 @@ app.get("/mushroom", async (req, res) => {
   const mushroom = await MushroomProduct.find({});
   // console.log(mushroom);
   res.render("mushrooms", { mushroom });
+});
+app.get("/mushroom-oyster-tea", async (req, res) => {
+  const mushroom = await MushroomOysterTeaProduct.find({});
+  // console.log(mushroom);
+  res.render("mushroom-oyster-tea", { mushroom });
 });
 app.get("/sugar", async (req, res) => {
   const sugar = await SugarProduct.find({});

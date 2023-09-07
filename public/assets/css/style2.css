@@ -177,3 +177,26 @@ button:hover{
     height: 180px;
     width: 180px;
 }
+.img-fluid {
+    height: 12em;
+    width: 16em;
+}
+
+.add-to-cart-btn {
+    width: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media (max-width: 767px) {
+  .content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+

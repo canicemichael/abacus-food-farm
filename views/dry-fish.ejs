@@ -8,7 +8,7 @@
             <h2>Shop</h2>
             <ol>
               <li><a href="index.html">Home</a></li>
-              <li>Rabbit</li>
+              <li>Dry Fish</li>
             </ol>
           </div>
         </div>
@@ -21,12 +21,12 @@
       <section id="team" class="team">
         <div class="container" data-aos="fade-up">
           <div class="section-title">            
-            <p>Rabbit</p>
+            <p>Dry Fish</p>
           </div>
 
           <div class="row">
             
-            <% rabbit.forEach((inv)=>{%>
+            <% fish.forEach((inv)=>{%>
               <div class="col-lg-3 col-md-6 d-flex align-items-stretch content-center">
                 <div class="member" data-aos="fade-up" data-aos-delay="100">
                   <div class="member-img">
@@ -43,12 +43,11 @@
                   <div class="member-info">
                     <h4 id="item-name"><%= inv.name %></h4>
                     <span id="item-price"><%= inv.price %></span>
-                    <span id="item-id" style="display: none;"><%= inv.id %></span>
+                    <span id="item-id" style="display: none"><%= inv.id %></span>
                 </div>
                 </div>
               </div>
               <%})%>
-        </div>
         </div>
       </section>
       <!-- End Team Section -->
