@@ -190,6 +190,11 @@ button:hover {
   margin: auto;
 }
 
+.service-img {
+  width: 100%;
+  height: 15em;
+}
+
 @media (max-width: 767px) {
   .content-center {
     display: flex;
