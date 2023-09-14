@@ -21,7 +21,9 @@ const { SoyabeanProduct } = require("./models/soyabean-product");
 const { SpicesProduct } = require("./models/spices-product");
 const { SugarProduct } = require("./models/sugar-product");
 const { Order } = require("./models/order");
-const { MushroomOysterTeaProduct } = require("./models/mushroom-oyster-tea-product");
+const {
+  MushroomOysterTeaProduct,
+} = require("./models/mushroom-oyster-tea-product");
 const { getTransport, getMailOptions } = require("./service.js");
 const app = express();
 
