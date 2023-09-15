@@ -202,3 +202,9 @@ button:hover {
     align-items: center;
   }
 }
+
+.ri-store-line{
+  width: 60px;
+  height: 6em;
+  font-size: 40px;
+}
