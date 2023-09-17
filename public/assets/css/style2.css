@@ -208,3 +208,7 @@ button:hover {
   height: 6em;
   font-size: 40px;
 }
+
+.farm-desc-imgs {
+  width: 100%;
+}

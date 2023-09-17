@@ -137,6 +137,11 @@ app.get("/fish", async (req, res) => {
 
   res.render("fish", { fish });
 });
+app.get("/fish-farm", async (req, res) => {
+  const fish = await FishProduct.find({});
+
+  res.render("fish-farm", { fish });
+});
 app.get("/dry-fish-product", async (req, res) => {
   const fish = await DryfishProduct.find({});
 
@@ -161,6 +166,11 @@ app.get("/mushroom", async (req, res) => {
   const mushroom = await MushroomProduct.find({});
   // console.log(mushroom);
   res.render("mushrooms", { mushroom });
+});
+app.get("/mushroom-farm", async (req, res) => {
+  const mushroom = await MushroomProduct.find({});
+  // console.log(mushroom);
+  res.render("mushrooms-farm", { mushroom });
 });
 app.get("/mushroom-oyster-tea", async (req, res) => {
   const mushroom = await MushroomOysterTeaProduct.find({});
