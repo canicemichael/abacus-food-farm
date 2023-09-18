@@ -171,7 +171,7 @@ app.get("/mushroom", async (req, res) => {
 app.get("/mushroom-sub", async (req, res) => {
   const mushroom = await MushroomSub.find({});
   // console.log(mushroom);
-  res.render("mushrooms", { mushroom });
+  res.render("mushroom-sub", { mushroom });
 });
 app.get("/mushroom-farm", async (req, res) => {
   const mushroom = await MushroomProduct.find({});
@@ -196,7 +196,7 @@ app.get("/soyabean", async (req, res) => {
   res.render("soyabean", { soyabean });
 });
 app.get("/mushroom-sub", async (req, res) => {
-  const mushroom = await MushroomProduct.find({});
+  const mushroom = await MushroomSub.find({});
   res.render("mushroom-sub", { mushroom });
 });
 app.get("/products", (req, res) => {

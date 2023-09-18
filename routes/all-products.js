@@ -6,6 +6,7 @@ const { FishProduct } = require("../models/fish-product");
 const { GrasscuterProduct } = require("../models/grasscuter-product");
 const { MilkProduct } = require("../models/milk-product");
 const { MushroomProduct } = require("../models/mushroom-product");
+const { MushroomSub } = require("../models/mushroom-sub");
 const { RabbitProduct } = require("../models/rabbit-product");
 const { SnailProduct } = require("../models/snail-product");
 const { SoyabeanProduct } = require("../models/soyabean-product");
@@ -165,6 +166,35 @@ router.post("/milk-product", upload.single("image"), async (req, res) => {
 
 router.post("/mushroom-product", upload.single("image"), async (req, res) => {
   const product = new MushroomProduct({
+    name: req.body.name,
+    description: req.body.description,
+    richDescription: req.body.richDescription,
+    image: req.body.image,
+    price: req.body.price,
+    category: req.body.category,
+  });
+
+  if (!product) {
+    return res
+      .status(401)
+      .json({ success: false, message: "the product cannot be created" });
+  }
+
+  product
+    .save()
+    .then((createdProduct) => {
+      res.status(201).json(createdProduct);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        success: false,
+      });
+    });
+});
+
+router.post("/mushroom-sub", upload.single("image"), async (req, res) => {
+  const product = new MushroomSub({
     name: req.body.name,
     description: req.body.description,
     richDescription: req.body.richDescription,
