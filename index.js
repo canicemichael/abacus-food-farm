@@ -191,10 +191,17 @@ app.get("/spices", async (req, res) => {
   const spices = await SpicesProduct.find({});
   res.render("spices", { spices });
 });
-app.get("/soyabean", async (req, res) => {
+
+app.get("/soyamilk", async (req, res) => {
   const soyabean = await SoyabeanProduct.find({});
   res.render("soyabean", { soyabean });
 });
+
+app.get("/yogurt", async (req, res) => {
+  const soyabean = await MilkProduct.find({});
+  res.render("yogurt", { soyabean });
+});
+
 app.get("/mushroom-sub", async (req, res) => {
   const mushroom = await MushroomSub.find({});
   res.render("mushroom-sub", { mushroom });
