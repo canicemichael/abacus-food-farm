@@ -15,6 +15,7 @@ const { FishProduct } = require("./models/fish-product");
 const { GrasscuterProduct } = require("./models/grasscuter-product");
 const { MilkProduct } = require("./models/milk-product");
 const { MushroomProduct } = require("./models/mushroom-product");
+const { MushroomSub } = require("./models/mushroom-sub");
 const { RabbitProduct } = require("./models/rabbit-product");
 const { SnailProduct } = require("./models/snail-product");
 const { SoyabeanProduct } = require("./models/soyabean-product");
@@ -164,6 +165,11 @@ app.get("/snail", async (req, res) => {
 });
 app.get("/mushroom", async (req, res) => {
   const mushroom = await MushroomProduct.find({});
+  // console.log(mushroom);
+  res.render("mushrooms", { mushroom });
+});
+app.get("/mushroom-sub", async (req, res) => {
+  const mushroom = await MushroomSub.find({});
   // console.log(mushroom);
   res.render("mushrooms", { mushroom });
 });
