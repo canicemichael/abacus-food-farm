@@ -74,7 +74,7 @@ const whatsapp = document.querySelector(".chat-button");
 whatsapp.addEventListener("click", async (event) => {
   event.preventDefault();
 
-  const phoneNumber = "2349017005308"; // Replace with the recipient's phone number
+  const phoneNumber = "2349017005308"; // Replace with the recipient's phone number 2347040628752
   const message = "Hello, I'm interested in your products!"; // Replace with your message
 
   const encodedMessage = encodeURIComponent(message);
