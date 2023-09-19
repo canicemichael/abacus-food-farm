@@ -184,7 +184,7 @@ CheckoutButton.textContent = "Check-out";
 
 CheckoutButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  window.location.href = "http://localhost:4000/checkout";
+  window.location.href = "http://localhost:4000/checkout2";
 });
 
 // Create a link element
