@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(actualTotal);
   
     // SEND DATA TO SERVER
-    const url = "http://localhost:4000/order"; // Replace with your server's URL
+    const url = "https://citrumilk.com/order"; // Replace with your server's URL 
     if (firstName.value === ''){
       firstName.value = 'customar name'
     }
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((responseData) => {
         // Handle the response from the server
         console.log("Server Response:", responseData);
-        const url = `http://localhost:4000/payment`;
+        const url = `https://citrumilk.com/payment`;
         window.location.href = url;
       })
       .catch((error) => {
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     detailsDiv2.classList.add("item-details2");
     const total = item.quantity * item.price;
     detailsDiv.textContent = `${item.name} (x${item.quantity})`;
-    detailsDiv2.textContent = ` $${total}.00`;
+    detailsDiv2.textContent = ` ₦${total}.00`;
 
     countt += total;
 
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const subtotallValue = document.createElement("div");
   subtotallValue.classList.add("item-details3");
   subtotall.textContent = "Subtotal";
-  subtotallValue.textContent = `$${countt}.00`;
+  subtotallValue.textContent = `₦${countt}.00`;
 
   checkoutDivv.appendChild(subtotall);
   checkoutDivv.appendChild(subtotallValue);
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   totalBox.textContent = "Total";
   countt += Number(deliveryPrice);
-  totalBoxValue.textContent = `$${countt}.00`;
+  totalBoxValue.textContent = `₦${countt}.00`;
 
   totalCont.appendChild(totalBox);
   totalCont.appendChild(totalBoxValue);
@@ -272,9 +272,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let deliveryInclu =
       countt + Number(deliveryPrice) - Number(deliveryConstant);
     //   countt += Number(deliveryPrice);
-    totalBoxValue.textContent = `$${deliveryInclu}.000`;
+    totalBoxValue.textContent = `₦${deliveryInclu}.000`;
 
-    totalPriceValue.value = `$${deliveryInclu}.000`;
+    totalPriceValue.value = `₦${deliveryInclu}.000`;
   });
   targetElement2.addEventListener("click", function () {
     // Example usage: retrieve the selected radio button's number
@@ -289,9 +289,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let deliveryInclu =
       countt + Number(deliveryPrice) - Number(deliveryConstant);
     //   countt += Number(deliveryPrice);
-    totalBoxValue.textContent = `$${deliveryInclu}.000`;
+    totalBoxValue.textContent = `₦${deliveryInclu}.000`;
 
-    totalPriceValue.value = `$${deliveryInclu}.000`;
+    totalPriceValue.value = `₦${deliveryInclu}.000`;
   });
   targetElement3.addEventListener("click", function () {
     // Example usage: retrieve the selected radio button's number
@@ -306,9 +306,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let deliveryInclu =
       countt + Number(deliveryPrice) - Number(deliveryConstant);
     //   countt += Number(deliveryPrice);
-    totalBoxValue.textContent = `$${deliveryInclu}.000`;
+    totalBoxValue.textContent = `₦${deliveryInclu}.000`;
 
-    totalPriceValue.value = `$${deliveryInclu}.000`;
+    totalPriceValue.value = `₦${deliveryInclu}.000`;
   });
   targetElement4.addEventListener("click", function () {
     // Example usage: retrieve the selected radio button's number
@@ -323,9 +323,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let deliveryInclu =
       countt + Number(deliveryPrice) - Number(deliveryConstant);
     //   countt += Number(deliveryPrice);
-    totalBoxValue.textContent = `$${deliveryInclu}.000`;
+    totalBoxValue.textContent = `₦${deliveryInclu}.000`;
 
-    totalPriceValue.value = `$${deliveryInclu}.000`;
+    totalPriceValue.value = `₦${deliveryInclu}.000`;
   });
   targetElement5.addEventListener("click", function () {
     // Example usage: retrieve the selected radio button's number
@@ -340,9 +340,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let deliveryInclu =
       countt + Number(deliveryPrice) - Number(deliveryConstant);
     //   countt += Number(deliveryPrice);
-    totalBoxValue.textContent = `$${deliveryInclu}.000`;
+    totalBoxValue.textContent = `₦${deliveryInclu}.000`;
 
-    totalPriceValue.value = `$${deliveryInclu}.000`;
+    totalPriceValue.value = `₦${deliveryInclu}.000`;
   });
 
   function generateUniqueOrderId() {

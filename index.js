@@ -263,7 +263,20 @@ app.post("/order", async (req, res) => {
   // Create mailrequest
   // let mailRequest = getMailOptions("citrumilk@gmail.com", newOrder);
   let mailRequest = getMailOptions("citrumilk@gmail.com", {
-    
+    orderId: "receivedData.orderId",
+    first_name: receivedData.first_name_mail,
+    last_name: receivedData.last_name_mail,
+    email: receivedData.email_mail,
+    phone: receivedData.phone_mail,
+    address: receivedData.address_mail,
+    town: receivedData.town_mail,
+    state_name: receivedData.state_name_mail,
+    delivery_location: receivedData.delivery_location_mail,
+    delivery_price: receivedData.delivery_price_mail,
+    item_details: receivedData.item_details_mail,
+    subtotal: receivedData.subtotal_mail,
+    actual_total: receivedData.actual_total_mail,
+    totalPrice: receivedData.totalPrice
   });
 
   //Send mail

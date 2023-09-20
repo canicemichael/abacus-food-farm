@@ -42,7 +42,7 @@ document.getElementById("roott").innerHTML = categories.map((item) => {
             </div>
             <div class='bottom'>
                 <p>${title}</p>
-                <h2>$ ${price}.00</h2>` +
+                <h2>₦ ${price}.00</h2>` +
     "<button onclick='addtocart(" +
     i++ +
     ")'>Add to cart</button>" +
@@ -68,19 +68,19 @@ function displaycart(a){
     document.getElementById("count").innerHTML = cart.length;
     if(cart.length == 0) {
         document.getElementById('cartItem').innerHTML = "Your cart is empty";
-        document.getElementById("total").innerHTML = "$ "+0+".00";
+        document.getElementById("total").innerHTML = "₦ "+0+".00";
     } else {
         document.getElementById("cartItem").innerHTML = cart.map((items) => {
             var {image, title, price} = items;
             total = total + price;
-            document.getElementById("total").innerHTML = "$ "+ total+ ".00";
+            document.getElementById("total").innerHTML = "₦ "+ total+ ".00";
             return(
                 `<div class='cart-item'>
                     <div class='row-img'>
                         <img class='rowimg' src=${image}/>
                     </div>
                     <p style='font-size: 12px;'>${title}</p>
-                    <h2 style='font-size: 15px;'>$ ${price}.00</h2>`+
+                    <h2 style='font-size: 15px;'>₦ ${price}.00</h2>`+
                     "<i class='bi bi-trash' onclick='delElement("+ (j++) +")'></i></div>"
             );
         }).join('');

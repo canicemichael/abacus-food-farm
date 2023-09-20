@@ -67,7 +67,7 @@ cartItems.forEach((item) => {
   const detailsDiv = document.createElement("div");
   detailsDiv.classList.add("item-details");
   let total = item.quantity * item.price;
-  detailsDiv.textContent = `${item.name} - $${total}NGN`;
+  detailsDiv.textContent = `${item.name} - ₦${total}NGN`;
 
   const quantityChangeDiv = document.createElement("div");
   quantityChangeDiv.classList.add("quantity-change");
@@ -87,9 +87,9 @@ cartItems.forEach((item) => {
     item.quantity += 1;
     quantityState.textContent = item.quantity;
     total = item.quantity * item.price;
-    detailsDiv.textContent = `${item.name} - $${total}NGN`;
+    detailsDiv.textContent = `${item.name} - ₦${total}NGN`;
     count += Number(item.price);
-    subtotalValue.textContent = `$${count}.00`;
+    subtotalValue.textContent = `₦${count}.00`;
 
     // Get existing cart data from local storage
     const cart = JSON.parse(window.localStorage.getItem("cart")) || [];
@@ -112,13 +112,13 @@ let numOne = 1;
     if (item.quantity === 0) {
       item.quantity = 1;
       total = item.quantity * item.price;
-      detailsDiv.textContent = `${item.name} - $${total}NGN`;
+      detailsDiv.textContent = `${item.name} - ₦${total}NGN`;
     } else {
       quantityState.textContent = item.quantity;
       total = item.quantity * item.price;
-      detailsDiv.textContent = `${item.name} - $${total}NGN`;
+      detailsDiv.textContent = `${item.name} - ₦${total}NGN`;
       count -= Number(item.price);
-      subtotalValue.textContent = `$${count}.00`;
+      subtotalValue.textContent = `₦${count}.00`;
 
       // Get existing cart data from local storage
       const cart = JSON.parse(window.localStorage.getItem("cart")) || [];
@@ -171,7 +171,7 @@ cartTotalItemsQuantity.textContent = itemCount;
 const subtotal = document.createElement("h1");
 const subtotalValue = document.createElement("h1");
 subtotal.textContent = "Subtotal";
-subtotalValue.textContent = `$${count}.00`;
+subtotalValue.textContent = `₦${count}.00`;
 checkoutDiv.appendChild(subtotal);
 checkoutDiv.appendChild(subtotalValue);
 cartContainer.appendChild(checkoutDiv);
@@ -184,7 +184,7 @@ CheckoutButton.textContent = "Check-out";
 
 CheckoutButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  window.location.href = "http://localhost:4000/checkout2";
+  window.location.href = "https://citrumilk.com/checkout2";
 });
 
 // Create a link element
