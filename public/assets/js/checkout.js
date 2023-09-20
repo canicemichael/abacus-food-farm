@@ -140,8 +140,8 @@ placeOrder.addEventListener("click", async (event) => {
   }).then((responseData) => {
       // Handle the response from the server
       console.log("Server Response:", responseData);
-      const url = `http://localhost:4000/payment`;
-      window.location.href = url;
+      // const url = `http://localhost:4000/payment`;
+      // window.location.href = url;
     })
     .catch((error) => {
       console.error("Error:", error);

@@ -227,11 +227,16 @@ app.get("/checkout2", (req, res) => {
 
 app.post("/order", async (req, res) => {
   const receivedData = req.body; // Data sent from the frontend
-  console.log("Received Data:", receivedData);
+  const orderId = await req.body.orderId;
+  const totalPrice = await req.body.totalPrice;
+
+  // console.log(orderId);
+  // console.log("Received Data:", receivedData);
   // console.log("Received Data:");
 
   // save receivedData in the backend
   const newOrder = new Order({
+    orderId: "receivedData.orderId",
     first_name_mail: receivedData.first_name_mail,
     last_name_mail: receivedData.last_name_mail,
     email_mail: receivedData.email_mail,
@@ -244,10 +249,11 @@ app.post("/order", async (req, res) => {
     item_details_mail: receivedData.item_details_mail,
     subtotal_mail: receivedData.subtotal_mail,
     actual_total_mail: receivedData.actual_total_mail,
+    totalPrice: receivedData.totalPrice
   });
 
   // await newOrder.save();
-  res.render("cart-2");
+  // res.render("cart-2");
 
   // send receivedData to a mail
   // we get a mail each time a user orders a product with the
@@ -255,7 +261,10 @@ app.post("/order", async (req, res) => {
   // their mail if the havent paid.
 
   // Create mailrequest
-  let mailRequest = getMailOptions("canicecodes@gmail.com", newOrder);
+  // let mailRequest = getMailOptions("citrumilk@gmail.com", newOrder);
+  let mailRequest = getMailOptions("citrumilk@gmail.com", {
+    
+  });
 
   //Send mail
   return getTransport().sendMail(mailRequest, (error) => {
@@ -263,7 +272,8 @@ app.post("/order", async (req, res) => {
       res.status(500).redirect("/order");
     } else {
       // res.status(200).json('good');
-      res.render("payment"); //redirect to a page i want.
+      res.render("payment", {orderId, totalPrice}); //redirect to a page i want.
+      console.log(orderId);
     }
   });
 });
@@ -284,7 +294,7 @@ app.post("/order2", async (req, res) => {
   );
 });
 
-app.post("/payment", async (req, res) => {
+app.get("/payment", async (req, res) => {
   const first_name = await req.body.first_name;
   const last_name = await req.body.last_name;
   const email = await req.body.email;
@@ -293,6 +303,8 @@ app.post("/payment", async (req, res) => {
   const selectedOption = await req.body.picker;
   const radioBtn = await req.body.flexRadioDefault;
   const orderId = await req.body.orderId;
+  // let orderId = '11111';
+  console.log(orderId);
   const totalPrice = await req.body.totalPriceValue;
 
   res.render("payment", {
@@ -308,20 +320,20 @@ app.post("/payment", async (req, res) => {
   });
 });
 
-app.get("/send-mail", async (req, res) => {
-  //Create mailrequest
-  let mailRequest = getMailOptions("canicecodes@gmail.com", "some link");
+// app.get("/send-mail", async (req, res) => {
+//   //Create mailrequest
+//   let mailRequest = getMailOptions("canicecodes@gmail.com", "some link");
 
-  //Send mail
-  return getTransport().sendMail(mailRequest, (error) => {
-    if (error) {
-      res.status(500).send("Can't send email.");
-    } else {
-      // res.status(200).json('good');
-      res.render("payment"); //redirect to a page i want.
-    }
-  });
-});
+//   //Send mail
+//   return getTransport().sendMail(mailRequest, (error) => {
+//     if (error) {
+//       res.status(500).send("Can't send email.");
+//     } else {
+//       // res.status(200).json('good');
+//       res.render("payment"); //redirect to a page i want.
+//     }
+//   });
+// });
 
 app.listen(4000, () => {
   console.log("server listening at port 4000");

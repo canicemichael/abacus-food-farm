@@ -185,7 +185,7 @@
 .ri-bar-chart-2-fill:before { content: "\ea95"; }
 .ri-bar-chart-2-line:before { content: "\ea96"; }
 .ri-bar-chart-box-fill:before { content: "\ea97"; }
-.ri-bar-chart-box-line:before { content: "\ea98"; }
+.ri-bar-chart-box-line:before { content: "\ea98"; color: white; }
 .ri-bar-chart-fill:before { content: "\ea99"; }
 .ri-bar-chart-grouped-fill:before { content: "\ea9a"; }
 .ri-bar-chart-grouped-line:before { content: "\ea9b"; }
@@ -330,7 +330,7 @@
 .ri-calendar-fill:before { content: "\eb26"; }
 .ri-calendar-line:before { content: "\eb27"; }
 .ri-calendar-todo-fill:before { content: "\eb28"; }
-.ri-calendar-todo-line:before { content: "\eb29"; }
+.ri-calendar-todo-line:before { content: "\eb29"; color: white; }
 .ri-camera-2-fill:before { content: "\eb2a"; }
 .ri-camera-2-line:before { content: "\eb2b"; }
 .ri-camera-3-fill:before { content: "\eb2c"; }
@@ -1506,7 +1506,7 @@
 .ri-pages-fill:before { content: "\efbe"; }
 .ri-pages-line:before { content: "\efbf"; }
 .ri-paint-brush-fill:before { content: "\efc0"; }
-.ri-paint-brush-line:before { content: "\efc1"; }
+.ri-paint-brush-line:before { content: "\efc1"; color: white; }
 .ri-paint-fill:before { content: "\efc2"; }
 .ri-paint-line:before { content: "\efc3"; }
 .ri-palette-fill:before { content: "\efc4"; }
@@ -1994,7 +1994,7 @@
 .ri-store-3-fill:before { content: "\f1a6"; }
 .ri-store-3-line:before { content: "\f1a7"; }
 .ri-store-fill:before { content: "\f1a8"; }
-.ri-store-line:before { content: "\f1a9"; }
+.ri-store-line:before { content: "\f1a9"; color: white; }
 .ri-strikethrough-2:before { content: "\f1aa"; }
 .ri-strikethrough:before { content: "\f1ab"; }
 .ri-subscript-2:before { content: "\f1ac"; }

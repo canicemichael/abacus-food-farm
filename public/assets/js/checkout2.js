@@ -5,7 +5,120 @@ document.addEventListener("DOMContentLoaded", function () {
   totalBoxValue.classList.add("item-details3");
   totalBoxValue.setAttribute('name', 'totalBoxValue');
   console.log(totalBoxValue.innerHTML);
+  const placeOrder = document.getElementById("place-order");
+  const firstName = document.getElementById("first-name");
+  const lastName = document.getElementById("last-name");
+  const email = document.getElementById("email");
+  const phone = document.getElementById("phone");
+  const address = document.getElementById("inputAddress");
+  const town = document.getElementById("town");
+  const stateName = document.getElementById("inputState");
+  const orderID = document.getElementById("orderId");
+  const totalPprice = document.getElementById("totalPriceValue");
 
+  placeOrder.addEventListener("click", async (event) => {
+    event.preventDefault();
+    // console.log(firstName.value);
+    // console.log(lastName.value);
+    // console.log(email.value);
+    // console.log(phone.value);
+    // console.log(address.value);
+    // console.log(town.value);
+    // console.log(stateName.value);
+  
+    // You can perform some actions here before the form submission
+    // console.log("Event listener before form submission");
+  
+    // Now, submit the form programmatically
+    // placeOrder.submit();
+  
+    // This code will run after the form is submitted
+    // console.log("Event listener after form submission");
+  
+    let delivery_location;
+  
+    // Example usage: retrieve the selected radio button's number
+    const selectedRadio = getSelectedRadioButton();
+    if (selectedRadio) {
+      const selectedNumber = selectedRadio.getAttribute("date-address");
+      const selectedNumber2 = selectedRadio.getAttribute("value");
+      delivery_location = selectedNumber;
+      deliveryPrice = selectedNumber2;
+      // console.log("Delivery location:", selectedNumber);
+      // console.log("Delivery price:", selectedNumber2);
+    }
+  
+    const cartOrders = getCartItems();
+    let countt = 0;
+    cartOrders.forEach((item) => {
+      const total = item.quantity * item.price;
+      const name = `${item.name} (x${item.quantity}) - $${total}.00 with ID of ${item.id} and image ${item.image}`;
+  
+      countt += total;
+      console.log(name);
+    });
+    console.log(`Subotal Amount - ${countt}`);
+  
+    // Total amount addition of delivery service
+    const actualTotal = countt + Number(deliveryPrice);
+    console.log(actualTotal);
+  
+    // SEND DATA TO SERVER
+    const url = "http://localhost:4000/order"; // Replace with your server's URL
+    if (firstName.value === ''){
+      firstName.value = 'customar name'
+    }
+    if (lastName.value === ''){
+      lastName.value = 'customar last name'
+    }
+    if (email.value === ''){
+      email.value = 'customar mail'
+    }
+    if (phone.value === ''){
+      phone.value = 'customar phone'
+    }
+    if (address.value === ''){
+      address.value = 'customar address'
+    }
+    if (town.value === ''){
+      town.value = 'customar town'
+    }
+    const data = {
+      'first_name_mail': firstName.value,
+      'last_name_mail': lastName.value,
+      'email_mail': email.value,
+      'phone_mail': phone.value,
+      'address_mail': address.value,
+      'town_mail': town.value,
+      'state_name_mail': stateName.value,
+      'delivery_location_mail': delivery_location,
+      'delivery_price_mail': deliveryPrice,
+      'item_details_mail': cartOrders,
+      'subtotal_mail': countt,
+      'actual_total_mail': actualTotal,
+      'orderId': orderID.value,
+      'totalPrice': totalPprice.value,
+    };
+  
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((responseData) => {
+        // Handle the response from the server
+        console.log("Server Response:", responseData);
+        const url = `http://localhost:4000/payment`;
+        window.location.href = url;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  
+    
+  });
 
   // placeOrder.addEventListener("click", async (event) => {
   //   event.preventDefault();
