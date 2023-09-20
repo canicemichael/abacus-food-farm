@@ -185,7 +185,7 @@ CheckoutButton.textContent = "Check-out";
 CheckoutButton.addEventListener("click", async (event) => {
   event.preventDefault();
   window.location.href = "https://citrumilk.com/checkout2";
-});
+});1
 
 // Create a link element
 // const link = document.createElement("a");
